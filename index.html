@@ -89,14 +89,31 @@
 </head>
 <body>
     <div class="container">
-        <nav>
-                <div class="logo"><i class="fa-brands fa-git-alt"></i><p> dev_Git</p></div>
-                <div class="busca"><input type="text" name="nome" placeholder="Busque por algo"id="searchInput"><i class="fa-solid fa-magnifying-glass" type="submit" id="submit"></i></div>
-
-                <div class="botao"><button class="btn">SOBRE</button></div>
-                
-            </ul>
+        <nav >
+            <div class="logo">
+                <i class="fa-brands fa-git-alt"></i>
+                <p> dev_Git</p>
+            </div>
+            <div class="busca" onsubmit="Recebido()">
+                <input type="text" name="nome" placeholder="Digite seu nome"id="searchInput">
+                <i class="fa-solid fa-magnifying-glass" type="submit" id="submit"></i>
+            </div>
+            <div class="botao">
+                <button class="btn">SOBRE</button>
+            </div>
         </nav>
     </div>
+    <div class="resultado"></div>
+
+    <script>
+        function Recebido(){
+            const resultado = document.querySelector('.resultado')
+            const search = document.getElementById('searchInput').value
+            const submit = document.getElementById('submit')
+
+            resultado.innerHTML = search
+        }
+    </script>
+
 </body>
 </html>
