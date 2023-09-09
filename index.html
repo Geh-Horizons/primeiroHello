@@ -6,16 +6,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            height: 100vh;
+        }
+        nav {
+            padding: 10px;
+            background: linear-gradient(-135deg, #f7cb0a, #fffb01) ;
+        }
+        i {
+            color: black;
+            font-size: 50px;
+        }
+        ul {
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        li {
+            list-style: none;
+        }
+        #searchInput {
+            padding: 8px;
+            border-radius: 0px;
+            background: transparent;
+            border-bottom: 1px solid #000;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            outline: none;
+        }
+        #submit,  .btn{
+            padding: 8px 30px;
+            margin: 15px;
+            border-radius: 3px;
+            border: none;
+            background-color: #000;
+            color: #fff;
+            font-size: 18px;
+            transition: .5s;
+        }
+        #submit:hover, .btn:hover{
+            background-color: rgb(148, 0, 0);
+        }
+        
+
+    </style>
 </head>
 <body>
     <div class="container">
         <nav>
             <ul>
                 <li><i class="fa-brands fa-git-alt"></i></li>
-                <li></li>
-                <li></li>
+                <li><input type="text" name="nome" placeholder="Busque por algo" id="searchInput"><input type="submit" value="buscar" id="submit"></li>
+                <li><button class="btn">SOBRE</button></li>
             </ul>
         </nav>
+
         
 
     </div>
