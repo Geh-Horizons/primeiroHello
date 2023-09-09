@@ -13,24 +13,41 @@
         }
         .container {
             width: 100%;
-            height: 100vh;
+            
         }
         nav {
+            gap: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
             padding: 10px;
             background: linear-gradient(-135deg, #f7cb0a, #fffb01) ;
+        }
+        @media screen and (max-width: 600px){
+            nav {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .busca {
+            display: flex;
         }
         i {
             color: black;
             font-size: 50px;
         }
-        ul {
-            height: 80px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        li {
-            list-style: none;
+        p {
+            color: #000;
+            text-transform: uppercase;
+            font-weight: 800;
         }
         #searchInput {
             padding: 8px;
@@ -41,19 +58,30 @@
             border-left: none;
             border-right: none;
             outline: none;
+            max-width: 150px;
         }
-        #submit,  .btn{
-            padding: 8px 30px;
-            margin: 15px;
-            border-radius: 3px;
+        .btn {
+            
+            padding: 12px 35px;
+            border: none;
+            background-color: #000;
+            color: #fff;
+            margin: 10px;
+            border-radius: 5px;
+            flex-wrap: wrap;
+            transition: .2s;
+        }
+        #submit{
+            padding: 10px;
+            border-radius: 100px;
             border: none;
             background-color: #000;
             color: #fff;
             font-size: 18px;
-            transition: .5s;
+            transition: .2s;
         }
         #submit:hover, .btn:hover{
-            background-color: rgb(148, 0, 0);
+            background-color: #696969;
         }
         
 
@@ -62,15 +90,13 @@
 <body>
     <div class="container">
         <nav>
-            <ul>
-                <li><i class="fa-brands fa-git-alt"></i></li>
-                <li><input type="text" name="nome" placeholder="Busque por algo" id="searchInput"><input type="submit" value="buscar" id="submit"></li>
-                <li><button class="btn">SOBRE</button></li>
+                <div class="logo"><i class="fa-brands fa-git-alt"></i><p> dev_Git</p></div>
+                <div class="busca"><input type="text" name="nome" placeholder="Busque por algo"id="searchInput"><i class="fa-solid fa-magnifying-glass" type="submit" id="submit"></i></div>
+
+                <div class="botao"><button class="btn">SOBRE</button></div>
+                
             </ul>
         </nav>
-
-        
-
     </div>
 </body>
 </html>
