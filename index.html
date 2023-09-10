@@ -10,7 +10,7 @@
         * {
             margin: 0;
             padding: 0;
-            font-family: Poppins;
+            font-family: caviar dreams;
         }
         .container {
             width: 100%;
@@ -64,6 +64,7 @@
             border-right: none;
             outline: none;
             max-width: 150px;
+            
         }
         .btn {
             
@@ -89,19 +90,82 @@
         #submit:hover, .btn:hover{
             background-color: #696969;
         }
-        .resultado {
+        #resultado {
+            position: absolute;
             font-size: 30px;
             width: 100%;
             min-height: 80vh;
             display: flex;
+            flex-direction: column;
+            text-align: center;
             justify-content: center;
             align-items: center;
+            text-transform: inherit;
         }
         #spinner {
             color: #000;
             font-size: 50px;
         }
-
+        .pagina_vazia_spinner {
+            
+            display: block;
+            min-height: 80vh;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            
+        }
+        #searchInput.ative {
+            text-transform: uppercase;
+            font-size: 25px;
+        }
+        .usuario {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            padding: 10px;
+            text-transform: initial;
+            
+        }
+        .user {
+            padding: 15px;
+            
+            text-transform: uppercase;
+            
+            
+            
+            margin: 10px;
+            padding: 5px;
+        }
+        #voltar {
+            position: absolute;
+            top: 300px;
+            font-size: 30px;
+            margin-top: 20px;
+            width: 350px;
+            padding: 10px;
+            border: none;
+            background: #f7cb0a;
+        }
+        #voltar::before {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            content: '';
+            width: 0px;
+            height: 4px;
+            background: linear-gradient(150deg, rgba(0, 0, 0, 0), rgb(0, 0, 0));
+            transition: .5s ease-in-out;
+        }
+        #voltar:hover::before{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            content: '';
+        }
     </style>
 </head>
 <body>
@@ -113,35 +177,72 @@
             </div>
             <div class="busca" >
                 <input type="text" name="nome" placeholder="Digite seu nome"id="searchInput">
-                <button id="submit" onclick="recebido()">Enviar</button>
+                <button id="submit">Enviar</button>
             </div>
             <div class="botao">
                 <button class="btn">SOBRE</button>
             </div>
         </nav>
     </div>
-    <div class="resultado"></div>
+    <div id="resultado"></div>
+    
 
     <script>
-        function recebido(){
-           
+        
+            const resultado = document.getElementById('resultado')
             
-            const resultado = document.querySelector('.resultado')
-            const search = document.getElementById('searchInput').value
             const submit = document.getElementById('submit')
+            const search = document.getElementById('searchInput')
+            search.addEventListener('click', function(){
+                search.style.background = '#94949434'
+                
+                
+            })
+            search.addEventListener('mouseout', function(){
+                search.style.background = 'transparent'
+                
+                
+            })
+            submit.addEventListener('click', ()=>{
+                const inputValue = search.value
+                
+                document.getElementById('searchInput').value = ''
+                inputValue.lenght = 4
+                
+                
+                    if(inputValue != ''){
+                    console.log(inputValue)
 
-            if(search > search){
-                resultado.innerHTML = `<i class="fa-solid fa-spinner fa-spin" id="spinner"></i>`
-            setTimeout(() => {
-                resultado.innerHTML = `Fala ${search}, tudo bem aqui é o Geeh da Dev Git`
-            }, 2000);
-            }else {
-                alert('vazio')
-            }
+                    
+                    
+                    resultado.innerHTML = `<i class="fa-solid fa-spinner fa-spin" id="spinner"></i>`
+                    setTimeout(() => {
+                        inputValue.style = 'text-transform: uppercase;'
+                        
+                        resultado.innerHTML = `<span class="usuario">Fala <span class="user">${inputValue}</span> tudo bem?</span> Aqui é o Geeh da Dev Git<button id="voltar">Voltar</button>`
+                    }, 2000);
+                    //
+                    }else {
+                    resultado.style.fontSize = '25px'
+                    
+                    resultado.innerHTML = `<i class="fa-solid fa-spinner fa-spin" id="spinner"></i>`
+                    setTimeout(() => {
+                        resultado.innerHTML = `É preciso digitar seu nome para ver o que acontece
+                        `
+                        
+                    }, 2000);
+                    
+                    
+                    
+                }
+                  
+            })
             
-            
-        }
-        recebido()
+        
+        
+
+
+
     </script>
 
 </body>
