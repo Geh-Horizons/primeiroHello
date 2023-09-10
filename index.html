@@ -10,6 +10,7 @@
         * {
             margin: 0;
             padding: 0;
+            font-family: Poppins;
         }
         .container {
             width: 100%;
@@ -40,9 +41,13 @@
         .busca {
             display: flex;
         }
-        i {
-            color: black;
+        #logologo {
             font-size: 50px;
+            color: #000;
+        }
+        i {
+            color: rgb(255, 255, 255);
+            font-size: 20px;
         }
         p {
             color: #000;
@@ -72,8 +77,9 @@
             transition: .2s;
         }
         #submit{
-            padding: 10px;
-            border-radius: 100px;
+            margin-left: 20px;
+            padding: 5px 20px;
+            border-radius: 5px;
             border: none;
             background-color: #000;
             color: #fff;
@@ -83,7 +89,18 @@
         #submit:hover, .btn:hover{
             background-color: #696969;
         }
-        
+        .resultado {
+            font-size: 30px;
+            width: 100%;
+            min-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #spinner {
+            color: #000;
+            font-size: 50px;
+        }
 
     </style>
 </head>
@@ -91,12 +108,12 @@
     <div class="container">
         <nav >
             <div class="logo">
-                <i class="fa-brands fa-git-alt"></i>
+                <i class="fa-brands fa-git-alt" id="logologo"></i>
                 <p> dev_Git</p>
             </div>
-            <div class="busca" onsubmit="Recebido()">
+            <div class="busca" >
                 <input type="text" name="nome" placeholder="Digite seu nome"id="searchInput">
-                <i class="fa-solid fa-magnifying-glass" type="submit" id="submit"></i>
+                <button id="submit" onclick="recebido()">Enviar</button>
             </div>
             <div class="botao">
                 <button class="btn">SOBRE</button>
@@ -106,13 +123,25 @@
     <div class="resultado"></div>
 
     <script>
-        function Recebido(){
+        function recebido(){
+           
+            
             const resultado = document.querySelector('.resultado')
             const search = document.getElementById('searchInput').value
             const submit = document.getElementById('submit')
 
-            resultado.innerHTML = search
+            if(search > search){
+                resultado.innerHTML = `<i class="fa-solid fa-spinner fa-spin" id="spinner"></i>`
+            setTimeout(() => {
+                resultado.innerHTML = `Fala ${search}, tudo bem aqui é o Geeh da Dev Git`
+            }, 2000);
+            }else {
+                alert('vazio')
+            }
+            
+            
         }
+        recebido()
     </script>
 
 </body>
