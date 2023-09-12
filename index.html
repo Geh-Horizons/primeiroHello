@@ -17,6 +17,7 @@
             
         }
         nav {
+            height: 90px;
             gap: 20px;
             overflow: hidden;
             display: flex;
@@ -40,10 +41,12 @@
         }
         .busca {
             display: flex;
+            
         }
         #logologo {
             font-size: 50px;
             color: #000;
+            
         }
         i {
             color: rgb(255, 255, 255);
@@ -66,9 +69,14 @@
             max-width: 150px;
             
         }
+        .botao {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
         .btn {
             
-            padding: 12px 35px;
+            padding: 10px 20px;
             border: none;
             background-color: #000;
             color: #fff;
@@ -76,6 +84,7 @@
             border-radius: 5px;
             flex-wrap: wrap;
             transition: .2s;
+            
         }
         #submit{
             margin-left: 20px;
@@ -95,14 +104,17 @@
             font-size: 30px;
             width: 100%;
             min-height: 80vh;
-            display: flex;
-            flex-direction: column;
+            /* display: flex; */
+            /* flex-direction: column; */
             text-align: center;
             justify-content: center;
             align-items: center;
             text-transform: inherit;
         }
         #spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
             color: #000;
             font-size: 50px;
         }
@@ -119,7 +131,7 @@
             text-transform: uppercase;
             font-size: 25px;
         }
-        .usuario {
+        /* .usuario {
             display: flex;
             align-items: center;
             text-align: center;
@@ -127,52 +139,77 @@
             padding: 10px;
             text-transform: initial;
             
-        }
+        } */
         .user {
-            padding: 15px;
             
-            text-transform: uppercase;
-            
-            
-            
-            margin: 10px;
-            padding: 5px;
+            font-family: caviar dreams;
+            text-transform: capitalize;
+            gap: 0px;
+            display: flex;
+            text-align: center;
+            margin: 0px;
+            margin-top: 0px;
+            padding: 0px;
         }
-        #voltar {
-            position: absolute;
-            top: 300px;
-            font-size: 30px;
+        #login_user {
+            min-width: 120px;
+            font-size: 12px;
+            height: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* background: #000; */
+            margin: 0;
+            padding: 0;
+        }
+        #saiba_mais {
+            position: relative;
+            top: 0px;
+            text-transform: uppercase;
+            font-size: 25px;
             margin-top: 20px;
-            width: 350px;
+            min-width: 350px;
             padding: 10px;
             border: none;
-            background: #f7cb0a;
+            
+            background: #fcde5a;
+            transition: .5s;
+            cursor: pointer;
+            border-radius: 5px;
         }
-        #voltar::before {
+        #saiba_mais::before {
             position: absolute;
             bottom: 0;
             left: 0;
             content: '';
             width: 0px;
             height: 4px;
-            background: linear-gradient(150deg, rgba(0, 0, 0, 0), rgb(0, 0, 0));
+            background: linear-gradient(150deg, rgba(0, 0, 0, 0) 10%, rgb(0, 0, 0));
             transition: .5s ease-in-out;
+            
         }
-        #voltar:hover::before{
+        #saiba_mais:hover::before{
             position: absolute;
             bottom: 0;
+            
             width: 100%;
             height: 4px;
             content: '';
         }
+        #saiba_mais:hover {
+            background: #f7cb0a;
+            border-end-start-radius: 5px;
+        } 
     </style>
 </head>
 <body>
     <div class="container">
+        <div></div>
         <nav >
             <div class="logo">
-                <i class="fa-brands fa-git-alt" id="logologo"></i>
-                <p> dev_Git</p>
+                <i class="fab fa-git-alt" id="logologo"></i>
+                 
             </div>
             <div class="busca" >
                 <input type="text" name="nome" placeholder="Digite seu nome"id="searchInput">
@@ -180,9 +217,11 @@
             </div>
             <div class="botao">
                 <button class="btn">SOBRE</button>
+                <p id="login_user"></p>
             </div>
         </nav>
     </div>
+    <div id="spinner_load"></div>
     <div id="resultado"></div>
     
 
@@ -192,6 +231,7 @@
             
             const submit = document.getElementById('submit')
             const search = document.getElementById('searchInput')
+            const login_user = document.getElementById('login_user')
             search.addEventListener('click', function(){
                 search.style.background = '#94949434'
                 
@@ -216,9 +256,9 @@
                     
                     resultado.innerHTML = `<i class="fa-solid fa-spinner fa-spin" id="spinner"></i>`
                     setTimeout(() => {
-                        inputValue.style = 'text-transform: uppercase;'
                         
-                        resultado.innerHTML = `<span class="usuario">Fala <span class="user">${inputValue}</span> tudo bem?</span> Aqui é o Geeh da Dev Git<button id="voltar">Voltar</button>`
+                        login_user.innerHTML = `<span class="user">${inputValue}</span>`
+                        resultado.innerHTML = `<button id="saiba_mais">saiba mais</button>`
                     }, 2000);
                     //
                     }else {
